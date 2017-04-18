@@ -1,0 +1,260 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h2>Arquitectura de microservicios</h2>
+          <p><small>Ing. Yonatan Romero</small></p>
+          <small>Universidad Nacional de La Matanza</small>
+        </section>
+
+        <section>
+          <h2>Microservicio</h2>
+          Un estilo de arquitectura para desarrollar una aplicación como un
+          conjunto de pequeños servicios
+        </section>
+
+        <section>
+          Cada pequeño servicio tiene sus propios recursos de procesamiento y
+          se comunican a través de mecanismos livianos, generalmente a través
+          de APIs HTTP
+        </section>
+
+        <section>
+          <img src="img/monolithic_vs_microservice.png"/>
+        </section>
+
+        <section>
+          <h2>Librerías vs Servicios</h2>
+          <blockquote>
+            Los <strong>servicios</strong> son componentes
+            <em>out-of-process</em> que se comunican por peticiones de web
+            services o RPC.
+          </blockquote>
+        </section>
+
+        <section>
+          <h2>Componente</h2>
+          Unidad de software que es independientemente remplazable, actualizable
+          y desplegable.
+        </section>
+
+        <section>
+          <h2>Ventajas</h2>
+        </section>
+
+        <section>
+          <p>
+            Pequeños cambios en la aplicación no requieren un despliegue
+            completo
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Actualizaciones de dependencias internas y/o externas sin
+            impacto (si no se modifica la interfaz pública, claro)
+          </p>
+        </section>
+
+        <section>
+          <h2>Desventajas</h2>
+        </section>
+
+        <section>
+          <p>
+            Las llamadas remotas son más costosas que llamadas
+            intra-proceso
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Es necesario definir y documentar correctamente las interfaces
+            de los servicios
+          </p>
+        </section>
+
+        <section>
+          <h2>Organización de equipos de trabajo</h2>
+        </section>
+
+        <section>
+          <h2>Equipos inter-funcionales</h2>
+          <p>
+            Al dividir grandes aplicaciones en servicios es posible crear
+            equipos de trabajo inteligentemente
+          </p>
+          <p>
+            Optimiza la comunicación entre equipos de trabajo y minimiza la
+            cantidad de <em>aprobaciones</em>
+          </p>
+        </section>
+
+        <section>
+          <img height="600" src="img/monolithic_teams.png"/>
+        </section>
+
+        <section>
+          <img src="img/microservice_teams.png"/>
+          <p>
+            Todas las habilidades necesarias para desarrollo: UI, base de datos
+            y middleware
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Cada equipo interfuncional es encargado de construir y operar
+            cada <strong>PRODUCTO</strong>
+          </p>
+          <p class="fragment">
+            Productos ≠ Proyectos
+          </p>
+        </section>
+
+        <section>
+          <h2>Los productos no son proyectos</h2>
+          <p>
+            Los equipos interfuncionales son los dueños del producto durante
+            toda la vida del mismo
+          </p>
+          <blockquote>"You build, you run it"</blockquote>
+          <p>
+            Equipo de desarrollo totalmente responsable del producto en
+            producción.
+          </p>
+        </section>
+
+        <section>
+          <p>
+            En vez de ver el software como una lista de funcionalidades que
+            debe ser completada
+          </p>
+          <p>
+            Esta arquitectura enfatiza en la relaciones interpersonales dónde la
+            pregunta es cómo el software puede asistir a los usuarios en mejorar
+            su productividad en el negocio
+          </p>
+        </section>
+
+        <section>
+          <h2>¿Qué tan grandes deben ser los equipos?</h2>
+          <span class="fragment">
+            <p>Amazon utiliza la noción <em>"dos pizzas"</em></p>
+            <p>
+               Equipos no mucho más grandes que la cantidad de personas que
+               comen dos pizzas sin quedarse con hambre
+            </p>
+          </span>
+        </section>
+
+        <section>
+          <h2>Gobierno descentralizado</h2>
+        </section>
+
+        <section>
+          <p>
+            Una de las tendencias del gobierno centralizado es intentar
+            estandarizar una sóla tecnología para todos los problemas
+          </p>
+          <blockquote>
+            No todos los problemas son clavos, ni todas las soluciones son
+            martillos
+          </blockquote>
+        </section>
+
+        <section>
+          <p>
+            Dividir en servicios permite elegir las mejores herramientas,
+            lenguajes y plataformas técnológicas más adecuadas para el problema
+            a resolver
+          </p>
+          <p>
+            Mayor uso de lenguajes no "clásicos" como R, Ruby, Python, Scala,
+            Matlab, etc
+          </p>
+        </section>
+
+        <section>
+          <h2>Datos desentralizados</h2>
+          <p>
+             En aplicaciones monolíticas se suele usar una sola base de datos
+             donde conviven todas la información que necesitan los módulos. Se
+             usa la misma plataforma para todas las aplicaciones de la
+             organización
+          </p>
+        </section>
+
+        <section>
+          <p>
+            Los microservicios utilizan el almacen de datos más correcto para
+            su funcionalidad. Por ejemplo base de datos documentales (MongoDB)
+            o de clave-valor (Redis)
+          </p>
+          <p><strong>GRAN DESAFÍO:</strong> Consistencia de datos</p>
+        </section>
+
+        <section>
+          <img height="600" src="img/data_management.png"/>
+        </section>
+
+        <section>
+          <h2>Automatización de infraestructura</h2>
+          <p>
+            La automatización de infraestructura ha mejorado notablemente los
+            últimos años.
+          </p>
+          <p>Reduce errores humanos</p>
+          <p>Permite la integración continúa y la entrega continua </p>
+        </section>
+
+        <section>
+          <h2>Diseñar para el fallo</h2>
+          <p>
+            Las instancias de los microservicios pueden fallar. Es necesario
+            un sistema de monitoreo y de recuperación automática.
+          </p>
+          <p>
+            Generalmente se desarrolla un panel de control para monitorear el
+            estado de todas las instancias de la aplicación
+          </p>
+        </section>
+
+        <section>
+          <h2>Cambios frecuentes, rápidos y bien controlados</h2>
+        </section>
+
+        <section>
+          <h2>Casos de éxito</h2>
+          <p>Amazon AWS</p>
+          <p>Netflix</p>
+          <p>Spotify</p>
+        </section>
+
+        <section>
+          <img height="600" src="img/aws_console.png"/>
+        </section>
+
+        <section>
+          <h2>Arquitectura de microservicios</h2>
+          <h5>¿Preguntas?</h5>
+          <h6>Gracias por su tiempo</h6>
+          <p><small>Ing. Yonatan Romero</small></p>
+          <small>Universidad Nacional de La Matanza</small>
+        </section>
+      </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <script>
+      Reveal.initialize({history: true,});
+    </script>
+  </body>
+</html>
