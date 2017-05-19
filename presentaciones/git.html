@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h2>Sistema de control de versiones</h2>
+          <h3>GIT</h3>
+          <p><small>Ing. Yonatan Romero</small></p>
+          <small>Universidad Nacional de La Matanza</small>
+        </section>
+
+        <section>
+          <h1>Problemas por no usar VCS</h1>
+          <ul>
+            <li>Control de cambios</li>
+            <li>Trabajo en equipo</li>
+            <li>Historial de cambios: viaje en el tiempo</li>
+            <li>¿Qué cambió en cada versión?</li>
+          </ul>
+        </section>
+
+        <section>
+          <section>
+            <h1>Historia de los sistemas de control de versiones</h1>
+          </section>
+          <section>
+            <h1>Primera generación</h1>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Red</th>
+                  <td>Ninguna</td>
+                </tr>
+                <tr>
+                  <th>Operaciones</th>
+                  <td>Un archivo a la vez</td>
+                </tr>
+                <tr>
+                  <th>Concurrencia</th>
+                  <td>Bloqueo</td>
+                </tr>
+                <tr>
+                  <th>Ejemplo</th>
+                  <td>SCCS(1972), RCS(1982)</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h1>Segunda generación</h1>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Red</th>
+                  <td>Centralizada</td>
+                </tr>
+                <tr>
+                  <th>Operaciones</th>
+                  <td>Múltiples archivos</td>
+                </tr>
+                <tr>
+                  <th>Concurrencia</th>
+                  <td><em>Merge</em> antes de <em>commit</em></td>
+                </tr>
+                <tr>
+                  <th>Ejemplo</th>
+                  <td>CVS(1990), SVN(2000), TFS(2005)</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h1>Tercera generación</h1>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Red</th>
+                  <td>Distribuída</td>
+                </tr>
+                <tr>
+                  <th>Operaciones</th>
+                  <td>Conjunto de cambios</td>
+                </tr>
+                <tr>
+                  <th>Concurrencia</th>
+                  <td><em>Commit</em> antes del <em>merge</em></td>
+                </tr>
+                <tr>
+                  <th>Ejemplo</th>
+                  <td>Git(2005), Mercurial(2005), Bazaar(2005)</td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </section>
+
+        <section>
+          <h1>GIT</h1>
+          <p>
+            Creado por Linus Torvalds para el desarrollo del kernel
+            <strong>Linux</strong>
+          </p>
+        </section>
+
+        <section>
+          <h2>Características</h2>
+          <ul>
+            <li>Distribuído - Contribuidores alrededor del mundo</li>
+            <li>Ramas - Desarrollo no lineal</li>
+            <li>Rápida implementación</li>
+            <li>Repositorios por HTTP, SSH, rsync</li>
+            <li>Firma digital de cambios</li>
+          </ul>
+        </section>
+
+        <section>
+          <h2>Ciclo de vida</h2>
+          <img src="img/git-lifecycle.png" alt="">
+        </section>
+
+        <section>
+          <section data-background="img/git-jigsaw.gif">
+            <h1>Que empiece el juego...</h1>
+          </section>
+
+          <section>
+            <h2>Configurar git</h2>
+            <p>Información del usuario</p>
+            <pre>
+              git config --global user.name "Juan Peréz"
+              git config --global user.email "jperez@example.com"
+            </pre>
+          </section>
+
+          <section>
+            <h1>init</h1>
+            <p>Inicializa un repositorio</p>
+            <code>
+              git init .
+            </code>
+          </section>
+
+          <section>
+            <h1>status</h1>
+            <p>Ver estado del repositorio</p>
+            <code>
+              git status
+            </code>
+          </section>
+
+          <section>
+            <h1>add</h1>
+            <p>Agregar archivo al listado de archivos para hacer <em>commit</em></p>
+            <code>
+              git add lista.txt
+            </code>
+          </section>
+
+          <section>
+            <h1>commit</h1>
+            <p>Confirmar cambios</p>
+            <code>
+              git commit
+            </code>
+          </section>
+
+          <section>
+            <h1>rm</h1>
+            <p>Quitar archivo del sistema de control de cambios</p>
+            <code>
+              git rm build/a.out
+            </code>
+            <p><small>Generalmente archivos autogenerados</small></p>
+          </section>
+
+          <section>
+            <h1>Archivo .gitignore</h1>
+            <p>
+              <code>.gitignore</code> - Lista de arhivos que serán ignorados
+               por git
+            </p>
+            <pre>
+              build/*
+              *.exe
+              *.class
+              *.pyc
+            </pre>
+          </section>
+
+          <section>
+            <h1>branch</h1>
+            <p>Crea una rama nueva</p>
+            <code>git branch dev</code>
+          </section>
+
+          <section>
+            <h1>checkout</h1>
+            <p>Saltar entre ramas</p>
+            <code>git checkout dev</code>
+          </section>
+        </section>
+
+        <section>
+          <h2>Referencias</h2>
+          <p>
+            <a href="http://ericsink.com/vcbe/html/history_of_version_control.html">
+              Sink, Eric. "A History of Version Control". 2011 (Web). Última visita 19 de
+              mayo de 2017
+            </a>
+          </p>
+        </section>
+      </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <script>
+      Reveal.initialize({history: true,});
+    </script>
+  </body>
+</html>
