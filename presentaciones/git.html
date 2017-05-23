@@ -172,6 +172,28 @@
           </section>
 
           <section>
+            <h1>log</h1>
+            <p>Ver historial de commits</p>
+            <code>
+              git log
+            </code>
+          </section>
+
+          <section>
+            <h1>log</h1>
+            <p>Ver historial de commits</p>
+            <code>
+              git log
+            </code>
+          </section>
+
+          <section>
+            <h1>Tag</h1>
+            <p>Etiquetar versiones</p>
+            <code>git tag 0.1.0</code>
+          </section>
+
+          <section>
             <h1>rm</h1>
             <p>Quitar archivo del sistema de control de cambios</p>
             <code>
@@ -208,13 +230,284 @@
         </section>
 
         <section>
+          <section data-background="">
+            <h1>Trabajo en equipo</h1>
+          </section>
+
+          <section>
+            <h1>Crear repositorio bare</h1>
+            <p>Repositorio común compartido entre miembros del equipo</p>
+            <code>git init --bare webapp.git</code>
+          </section>
+
+          <section>
+            <h1>Clone</h1>
+            <p>Crea un respositorio local clonando el repositorio remoto</p>
+          </section>
+
+          <section>
+            <h2>Protocolos: Local</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Ventajas</th>
+                  <th>Desventajas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Fácil de compartir con otros miembros</td>
+                  <td>Necesita configurar una red compartida</td>
+                </tr>
+                <tr>
+                  <td>Rápido acceso al repositorio</td>
+                </tr>
+              </tbody>
+            </table>
+            <small><code>git clone /home/yromero/projects/webapp.git</code></small>
+          </section>
+
+          <section>
+            <h2>Protocolos: SSH</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Ventajas</th>
+                  <th>Desventajas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Fácil de compartir usando un servidor remoto</td>
+                  <td>No existe el acceso anónimo</td>
+                </tr>
+                <tr>
+                  <td>SSH comprime datos durante la transmisión. Mejora la velocidad</td>
+                </tr>
+              </tbody>
+            </table>
+            <small><code>git clone git@github.com:romeroyonatan/webapp.git</code></small>
+          </section>
+
+          <section>
+            <h2>Protocolos: GIT</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Ventajas</th>
+                  <th>Desventajas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Más rápido que otros</td>
+                  <td>No hay seguridad (cualquiera puede hacer cambios)</td>
+                </tr>
+              </tbody>
+            </table>
+            <small><code>git clone git://username@server/webproject.git</code></small>
+          </section>
+
+          <section>
+            <h2>Protocolos: HTTPS</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Ventajas</th>
+                  <th>Desventajas</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Fácil de configurar</td>
+                  <td>Transmisión de datos lenta</td>
+                </tr>
+              </tbody>
+            </table>
+            <small><code>git clone https://github.com/romeroyonatan/webapp.git</code></small>
+          </section>
+
+          <section>
+            <h1>Remote</h1>
+            <p>Agrega un repositorio remoto a uno existente</p>
+            <code>git remote add origin https://github.com/romeroyonatan/webapp.git</code>
+          </section>
+
+          <section>
+            <h1>Fetch</h1>
+            <p>Trae cambios realizados en repositorio remoto. No modifica archivos locales</p>
+            <code>git fetch</code>
+          </section>
+
+          <section>
+            <h1>Merge</h1>
+            <p>Combinación entre ramas</p>
+            <code>git merge origin/master</code>
+          </section>
+
+          <section>
+            <h1>Push</h1>
+            <p>Subir commits locales al servidor remoto</p>
+            <code>git commit origin master</code>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Resolución de conflictos</h1>
+          </section>
+
+          <section data-background="img/git-merge.gif"></section>
+
+          <section>
+            <h2>Fast-forward</h2>
+            <p>No existe conflicto. Mueve puntero HEAD</p>
+            <img src="img/git-ff.png" alt="Fast-forward merge" height="400"/>
+          </section>
+
+          <section>
+            <h2>Auto-merging</h2>
+            <p>Se genera un commit nuevo que combine todos los cambios</p>
+            <img src="img/git-automerge.png" alt="Fast-forward merge" height="400"/>
+          </section>
+
+          <section data-background="#861818">
+            <h2>Manual</h2>
+            <p>Existen cambios en la misma sección de un elemento de
+               configuración</p>
+            <img src="img/git-conflict.png"/>
+          </section>
+
+          <section>
+            <h3>herramientas para solucionar conflictos</h3>
+          </section>
+
+          <section>
+            <h3>grep</h3>
+            <p>Buscar algo entre todos los archivos</p>
+            <pre>
+            user@server:~$ git grep -n body
+            Master:Website.Index.html:4: &lt;body&gt;
+            Master:Website.Index.html:12: &lt;/body&gt;
+            </pre>
+          </section>
+
+          <section>
+            <h3>status</h3>
+            <p>Ver archivos en conflicto</p>
+            <code>git status</code>
+          </section>
+
+          <section>
+            <h3>diff</h3>
+            <p>Ver cambios en el repositorio</p>
+            <code> git diff &lt;commit-id&gt; </code>
+          </section>
+
+          <section>
+            <h3>stash</h3>
+            <p>Guardar temporalmente los cambios no commiteados</p>
+            <code>git stash</code><br/>
+            <code>git stash pop</code><br/>
+          </section>
+
+          <section>
+            <h3>mergetool</h3>
+            <p>Abre archivos conflictivos en editor de 3 vías</p>
+            <code>git mergetool</code>
+          </section>
+        </section>
+
+        <section>
+          <section data-background="img/git-clean-mistake.gif">
+            <h1>Limpiando tus errores</h1>
+          </section>
+
+          <section>
+            <h2>Clean</h2>
+            <p>Elimina archivos <em>untracked</em></p>
+            <code>git clean</code>
+          </section>
+
+          <section>
+            <h2>Checkout</h2>
+            <p>Revertir cambios al archivo</p>
+            <code>git checkout config.ini</code><br/>
+            <pre>
+              rm config.ini
+              git checkout HEAD config.ini
+            </pre>
+          </section>
+
+          <section>
+            <h2>reset</h2>
+            <p>Volver a un estado anterior</p>
+            <code>git reset B</code><br/>
+            <code>git reset --hard B</code><br/>
+            <code>git reset --soft B</code><br/>
+          </section>
+
+          <section>
+            <h2>reset</h2>
+            <dl>
+              <dt>--hard<dt>
+              <dd>Sobreescribe cambios locales.</dd>
+
+              <dt>--mixed <small>*</small><dt>
+              <dd>Marca cambios locales como modificaciones.</dd>
+
+              <dt>--soft<dt>
+              <dd>Cuando no commiteamos los archivos deseados.</dd>
+            </dl>
+          </section>
+
+          <section>
+            <h2>Editar un commit</h2>
+            <code>git commit --ammend</code><br/>
+          </section>
+
+          <section>
+            <h2>Cancelar un commit</h2>
+            <p>Crea un commit que revierte los cambios de un commit previo</p>
+            <p>Los commit <em>pusheados</em> no son reversibles</p>
+            <code>git revert 0335a5f13</code><br/>
+          </section>
+
+          <section>
+            <h2>Eliminar archivo de todos los commit</h2>
+            <p>En caso de haber subido accidentalmente un archivo con
+               información confidencial</p>
+            <code>
+              git filter-branch --index-filter 'git rm --cached
+                  --ignore-unmatch myconfidentialfilename.txt' HEAD
+            </code>
+          </section>
+
+          <section>
+            <h2>bisect</h2>
+            <p>Busqueda binaria para buscar commit que haya agregado un bug</p>
+            <pre>
+              user@server:~$ git bisect start
+              user@server:~$ git bisect bad commitIDAfterThePull
+              user@server:~$ git bisect good commitIDBefore
+            </pre>
+          </section>
+        </section>
+
+        <section>
           <h2>Referencias</h2>
-          <p>
-            <a href="http://ericsink.com/vcbe/html/history_of_version_control.html">
-              Sink, Eric. "A History of Version Control". 2011 (Web). Última visita 19 de
-              mayo de 2017
-            </a>
-          </p>
+          <ol>
+            <li>
+              <a href="http://ericsink.com/vcbe/html/history_of_version_control.html">
+                Sink, Eric. "A History of Version Control". 2011 (Web). Última visita 19 de
+                mayo de 2017
+              </a>
+            </li>
+            <li>
+              Git Best Practices Guide. Eric Pidoux. Packt Publishing. 2014.
+              ISBN 978-1-78355-373-0
+            </li>
+          </ol>
         </section>
       </div>
     </div>
