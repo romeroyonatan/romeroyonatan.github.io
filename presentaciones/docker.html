@@ -11,9 +11,13 @@
       <div class="slides">
 
         <section>
-          <h1>Introducción a Docker</h1>
-          <p><small>Ing. Yonatan Romero</small></p>
-          <small>Universidad Nacional de La Matanza</small>
+          <h2>Introducción a Docker</h2>
+          <img src="img/docker-billete.jpg"/>
+          <p>
+            <small>
+              Ing. Yonatan Romero<br/> Universidad Nacional de La Matanza
+            </small>
+          </p>
         </section>
 
         <section>
@@ -174,15 +178,225 @@
             <h2>Utilizando docker</h2>
           </section>
           <section>
+            <h2>run</h2>
+            <p>Ejecuta un comando en un contenedor</p>
+            <code>docker run busybox echo "Hello World!"</code>
+          </section>
+          <section>
+            <h2>run</h2>
+            <p>
+              Ejecuta un comando interactivo y borrar el contenedor al
+              finalizar
+            </p>
+            <code>docker run -ti --rm busybox sh</code>
+          </section>
+          <section>
             <h2>pull</h2>
             <p>Descargar imágenes desde repositorio (Por defecto DockerHub)</p>
             <code>docker pull busybox</code>
           </section>
           <section>
-            <h2>run</h2>
-            <p>Ejecuta un comando en un contenedor</p>
-            <code>docker run busybox echo "Hello World!"</code>
+            <h2>search</h2>
+            <p>Buscar imágenes en repositorios</p>
+            <code>docker search jenkins</code>
           </section>
+          <section>
+            <h2>ps</h2>
+            <p>Ver contenedores en ejecución</p>
+            <code>docker ps</code>
+          </section>
+          <section>
+            <h2>diff</h2>
+            <p>Ver cambios en contenedores</p>
+            <code>docker diff 6f8cdfb6976c</code>
+          </section>
+          <section>
+            <h2>stop</h2>
+            <p>
+              Detiene un contenedor en ejecución. Utiliza la señar SIGTERM(15),
+              si el contenedor no se detiene utiliza SIGKILL(9)
+            </p>
+            <code>docker stop 6f8cdfb6976c</code>
+          </section>
+          <section>
+            <h2>start</h2>
+            <p>Vuelve a ejecutar un contenedor detenido</p>
+            <code>docker start 6f8cdfb6976c</code>
+          </section>
+          <section>
+            <h2>restart</h2>
+            <p>Reinicia el contenedor</p>
+            <code>docker start 6f8cdfb6976c</code>
+          </section>
+          <section>
+            <h2>pause</h2>
+            <p>Suspende la ejecución del contenedor</p>
+            <code>docker pause 6f8cdfb6976c</code><br>
+            <code>docker unpause 6f8cdfb6976c</code>
+          </section>
+          <section>
+            <h2>commit</h2>
+            <p>Guarda los cambios efectuados en una nueva imagen</p>
+            <code>docker commit 6f8cdfb6976c someuser/example</code>
+          </section>
+          <section>
+            <h2>images</h2>
+            <p>Ver las imágenes descargadas en el sistema</p>
+            <code>docker images</code>
+          </section>
+          <section>
+            <h2>rm</h2>
+            <p>Eliminar contenedores detenidos</p>
+            <code>docker rm 6f8cdfb6976c</code>
+          </section>
+          <section>
+            <h2>rmi</h2>
+            <p>Eliminar imágenes que no estén siendo utilizadas</p>
+            <code>docker rmi someuser/example</code>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Construyendo imágenes</h2>
+          </section>
+          <section>
+            <h2>Dockerfile</h2>
+            <p>
+            Archivo que describe cómo debe construirse una imagen docker.
+            Brinda una forma clara de <strong>automatizar</strong> la
+            construcción de contenedores.
+            </p>
+          </section>
+          <section>
+            <h2>Formato</h2>
+            <p>
+            Es un archivo de texto con un formato parecido a un Makefile. Cada
+            instrucción es ejecutada en un contenedor distinto creando una nueva
+            capa en el sistema de archivos
+            </p>
+          </section>
+          <section>
+            <h2>Ejemplo</h2>
+            <pre style="white-space: pre-line;">
+            # Dockerfile
+            FROM busybox:latest
+            CMD echo Hello world!
+            </pre>
+          </section>
+          <section>
+            <h2>build</h2>
+            <p>Construye una imagen utilizando el <strong>Dockerfile</strong></p>
+            <code>docker build .</code>
+          </section>
+          <section>
+            <h2>tag</h2>
+            <p>Permite asignar un nombre amigable a una imagen</p>
+            <code>docker tag ccd4f144c764 busyboxplus</code>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h1>Dockerfile</h1>
+          </section>
+          <section>
+            <h2>ADD</h2>
+            <p>Copia archivos desde el host a la imagen</p>
+            <code>ADD proyecto.war /app</code>
+          </section>
+          <section>
+            <h2>ENV</h2>
+            <p>
+            Establece una variable de entorno. Puede ser accedida desde la
+            aplicación
+            </p>
+            <code>ENV DEBUG_LVL 3</code><br/>
+            <code>ENV APACHE_LOG_DIR /var/log/apache</code>
+          </section>
+          <section>
+            <h2>USER</h2>
+            <p>
+            Permite establecer el usuario con el que se ejecutará el contenedor.
+            Por defecto se utiliza el usuario <em>root</em>
+            </p>
+            <code>USER 73</code>
+          </section>
+          <section>
+            <h2>WORKDIR</h2>
+            <p>Cambia el directorio de trabajo</p>
+            <code>WORKDIR /app/</code>
+          </section>
+          <section>
+            <h2>VOLUME</h2>
+            <p>
+            Crea un volumen que será conpartido entre el host y el contenedor
+            o entre otros contenedores
+            </p>
+            <code>VOLUME /var/www/</code>
+          </section>
+          <section>
+            <h2>EXPOSE</h2>
+            <p>
+            Abre un puerto TCP o UDP para la comunicación entre el contenedor
+            y el mundo exterior
+            </p>
+            <code>EXPOSE 80 443</code><br/>
+            <code>EXPOSE 53/udp</code>
+          </section>
+          <section>
+            <h2>RUN</h2>
+            <p>
+            Ejecuta un comando en el contenedor (en tiempo de construcción)
+            </p>
+            <code>RUN echo Soy un ejemplo</code><br/>
+            <code>RUN ["echo", "Soy un ejemplo"]</code>
+          </section>
+          <section>
+            <h2>CMD</h2>
+            <p>
+            Ejecuta un comando en el contenedor (en tiempo de ejecución).
+            Puede ser sobreescrito con <code>docker run</code>
+            </p>
+            <code>CMD ["echo", "CMD demo"]</code>
+          </section>
+          <section>
+            <h2>ENTRYPOINT</h2>
+            <p>
+            Al igual que CMD ejecuta un comando en tiempo de ejecución,
+            se ejecuta siempre.
+            </p>
+            <code>ENTRYPOINT ["/entrypoint.sh"]</code>
+          </section>
+          <section>
+            <h2>ONBUILD</h2>
+            <p>
+            Permite ejecutar un comando cuando otra imagen es contruida
+            utilizando esta como base.
+            </p>
+            <code>ONBUILD ADD config /etc/appconfig</code>
+          </section>
+        </section>
+
+        <section>
+          <h2>.dockerignore</h2>
+          <p>
+          Cuando se construye una imagen, se envía el contexto de construcción
+          completo al demonio docker. Con este archivo se marcan los archivos
+          que no serán enviados al demonio docker al construir.
+          </p>
+          <pre style="white-space: pre-line;">
+          # .dockerignore
+          .git
+          *.tmp
+          </pre>
+        </section>
+
+        <section>
+          <h1>Buenas prácticas</h1>
+          <p>
+          Dockerfiles bien escritos mejoran la calidad de nuestra aplicación
+          </p>
         </section>
 
         <section>
@@ -195,7 +409,7 @@
           <ul>
             <li>
               <a href="http://blog.aquasec.com/a-brief-history-of-containers-from-1970s-chroot-to-docker-2016" target="_blank">
-                A Brief History of Containers: From 1970s chroot to Docker 2016. Rani Osnat (Última consulta 29 de mayo de 2017)
+                A Brief History of Containers: From 1970s chroot to Docker 2016. Rani Osnat (última consulta 29 de mayo de 2017)
               </a>
             </li>
             <li>
@@ -206,6 +420,11 @@
             <li>
               Learning Docker. Pethuru Raj, Jeeva Chelladhurai, Vinod Singh.
               (2015). Packt Publishing. ISBN 978-1-78439-793-7
+            </li>
+            <li>
+              <a href="https://docs.docker.com/engine/userguide/eng-image/dockerfile_best-practices/#general-guidelines-and-recommendations" target="_blank">
+                Best practices for writing Dockerfiles. Docker (última consulta 29 de mayo de 2017)
+              </a>
             </li>
           </ul>
         </section>
