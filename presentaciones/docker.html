@@ -1,0 +1,220 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h1>Introducción a Docker</h1>
+          <p><small>Ing. Yonatan Romero</small></p>
+          <small>Universidad Nacional de La Matanza</small>
+        </section>
+
+        <section>
+          <section>
+            <h2>Historia de la containerización</h2>
+          </section>
+          <section>
+            <h2>1979 - chroot</h2>
+            <p>
+              Introducido en Unix v7. <em>System call</em> para cambiar el
+              directorio <em>root</em> de un proceso y sus hijos en una nueva
+              ubicación en el sistema de archivos
+            </p>
+            <p>
+              Segrega el acceso a archivos para cada proceso.
+            </p>
+          </section>
+          <section>
+            <h2>2000 - FreeBSD Jails</h2>
+            <p>
+              Pensado para proveedores de <em>hosting</em>. Permite separar
+              claramente servicios entre los clientes para mejorar la seguridad.
+            </p>
+            <p>
+              Permite al administrador particionar un sistema FreeBSD en
+              pequeños e independientes sistemas llamados "<em>jails</em>".
+              Cada uno tiene dirección IP y configuración propia
+            </p>
+          </section>
+          <section>
+            <h2>2001 - Linux VServer</h2>
+            <p>
+              Como los <em>jails</em> permite particionar recursos (Sistema de
+              archivos, IP, memoria) de un sistema con kernel Linux.
+            </p>
+          </section>
+          <section>
+            <h2>2004 - Solaris containers</h2>
+            <p>
+              Sun liberó solaris container en Solaris 10 que combina el control
+              de recursos y separación de límites a través de zonas, que fueron
+              capaces de aprovechar las características como <em>snapshots</em>
+              y clonación de ZFS.
+            </p>
+          </section>
+          <section>
+            <h2>2005 - OpenVZ</h2>
+            <p>
+              Permite que un servidor físico ejecute múltiples instancias de
+              sistemas operativos aislados, conocidos como Servidores Privados
+              Virtuales (VPS en inglés).
+            </p>
+            <p>
+              OpenVZ ofrece menor flexibilidad en la elección del sistema
+              operativo: tanto los huéspedes como los anfitriones deben ser
+              Linux (pueden ser distintas distribuciones).
+            </p>
+          </section>
+          <section>
+            <h2>2006 - cgroups</h2>
+            <p>
+              Process containers (Desarrollado por Google) fue diseñado para
+              limitar, contabiliza y aislar el uso de recursos (CPU, memoria,
+              acceso a disco y red) de una colección de procesos.
+            </p>
+            <p>
+              Fue renombrado a <em>cgroups</em> cuando fue agregado al kernel
+              <em>Linux</em> 2.6.24
+            </p>
+          </section>
+          <section>
+            <h2>2008 - LXC</h2>
+            <p>
+              Fue la primera implementación de contenedores Linux. Fue
+              implementado usando <em>cgroups</em> y <em>Linux namespaces</em>
+              sin requerir ningún parche.
+            </p>
+          </section>
+          <section>
+            <h2>2011 - Warden</h2>
+            <p>
+              Implementación de contenedores de CloudFoundry. Provee una API
+              para la administración de contenedores.
+            </p>
+            <p>
+              Fue desarrollado con arquitectura cliente-servidor para
+              administrar una colección de contenedores a través de multiples
+              hosts.
+            </p>
+          </section>
+          <section>
+            <h2>2013 - LMCTFY</h2>
+            <p>
+              <strong>Let Me Contain That For You</strong> -
+              Versión <em>open source</em> de <em>Google container stack</em>.
+              Provee contenedores Linux, con capacidad de crear
+              sub-contenedores.
+            </p>
+          </section>
+          <section>
+            <h2>2013 - Docker</h2>
+            <p>
+              Inicialmente utilizaba <em>LXC</em>, actualmente utiliza su
+              propia librería, <em>libcontainer</em>.
+            </p>
+            <p>
+              Ofrece el repositorio <strong>DockerHub</strong> donde los
+              desarrolladores pueden compartir los contenedores. Permite
+              su despliegue en pocos segundos.
+            </p>
+          </section>
+          <section>
+            <h2>2016 - rkt</h2>
+            <p>
+              Alternativa a Docker creada por CoreOS. Permite ejecutar imágenes
+              de Docker. Hace las mismas cosas que Docker, pero mejor integrada
+              con su sistema operativo y Kubernetes.
+            </p>
+            <p>
+              Compatibilidad con imágenes Docker y OCI (Open Container Images)
+            </p>
+        </section>
+        </section>
+
+        <section>
+          <h2>Container vs máquina virtual</h2>
+          <img src="img/docker-container.png"/>
+        </section>
+
+        <section>
+          <h2>Se puede combinar ambas tecnologías</h2>
+          <img src="img/docker-vm-together.png"/>
+        </section>
+
+        <section>
+          <h2>Términología</h2>
+          <dl>
+            <dt>Image</dt>
+            <dd>
+              Colección de todas los archivos que componen nuestra aplicación
+              de software. Estático
+            </dd>
+
+            <dt>Container</dt>
+            <dd>
+              Instancia de nuestra aplicación en tiempo de ejecución. Dinámico.
+            </dd>
+          </dl>
+        </section>
+
+        <section>
+          <h2>Filesystems Docker</h2>
+          <img src="img/docker-filesystems.png" height="500"/>
+        </section>
+
+        <section>
+          <section>
+            <h2>Utilizando docker</h2>
+          </section>
+          <section>
+            <h2>pull</h2>
+            <p>Descargar imágenes desde repositorio (Por defecto DockerHub)</p>
+            <code>docker pull busybox</code>
+          </section>
+          <section>
+            <h2>run</h2>
+            <p>Ejecuta un comando en un contenedor</p>
+            <code>docker run busybox echo "Hello World!"</code>
+          </section>
+        </section>
+
+        <section>
+          <h2>Crecimiento Docker</h2>
+          <img src="img/docker-pulls.png"/>
+        </section>
+
+        <section>
+          <h2>Referencias</h2>
+          <ul>
+            <li>
+              <a href="http://blog.aquasec.com/a-brief-history-of-containers-from-1970s-chroot-to-docker-2016" target="_blank">
+                A Brief History of Containers: From 1970s chroot to Docker 2016. Rani Osnat (Última consulta 29 de mayo de 2017)
+              </a>
+            </li>
+            <li>
+              <a href="https://www.docker.com" target="_blank">
+                Sitio oficial de Docker
+              </a>
+            </li>
+            <li>
+              Learning Docker. Pethuru Raj, Jeeva Chelladhurai, Vinod Singh.
+              (2015). Packt Publishing. ISBN 978-1-78439-793-7
+            </li>
+          </ul>
+        </section>
+
+      </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <script>
+      Reveal.initialize({history: true,});
+    </script>
+  </body>
+</html>
