@@ -4,7 +4,7 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="css/reveal.css">
     <link rel="stylesheet" href="css/theme/black.css">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <title>Introducción a Docker</title>
   </head>
   <body>
     <div class="reveal">
@@ -183,12 +183,20 @@
             <code>docker run busybox echo "Hello World!"</code>
           </section>
           <section>
-            <h2>run</h2>
+            <h2>Ejecutar un comando interactivo</h2>
             <p>
               Ejecuta un comando interactivo y borrar el contenedor al
               finalizar
             </p>
             <code>docker run -ti --rm busybox sh</code>
+          </section>
+          <section>
+            <h2>Compartir carpetas y archivos</h2>
+            <code>docker run -ti --rm -v "/cfg:/cfg:ro" busybox sh</code>
+          </section>
+          <section>
+            <h2>Exponer puertos</h2>
+            <code>docker run -p 80:80 httpd</code>
           </section>
           <section>
             <h2>pull</h2>
@@ -393,10 +401,70 @@
         </section>
 
         <section>
-          <h1>Buenas prácticas</h1>
-          <p>
-          Dockerfiles bien escritos mejoran la calidad de nuestra aplicación
-          </p>
+          <section>
+            <h1>Buenas prácticas</h1>
+            <p>
+              Dockerfiles bien escritos mejoran la calidad de nuestra aplicación<br/>
+            </p>
+          </section>
+          <section>
+            <h2>Containers efímeros</h2>
+            <p>
+              Los contenedores pueden ser detenidos, destruídos y recreados con el
+              mínimo de esfuerzo y configuración
+            </p>
+          </section>
+          <section>
+            <h2>Usar .dockerignore</h2>
+          </section>
+          <section>
+            <h2>Evitar instalar paquetes innecesarios</h2>
+          </section>
+          <section>
+            <h2>Cada contenedor debe tener un único propósito</h2>
+          </section>
+          <section>
+            <h2>Minimizar el número de capas</h2>
+          </section>
+          <section>
+            <h2>Ordenar alfabéticamente los argumentos multilinea</h2>
+            <p>Evita repetición de parámetros, mejora la lectura y revisión</p>
+            <pre>
+              RUN apt-get update &amp;&amp; apt-get install -y \
+                bzr \
+                cvs \
+                git \
+                mercurial \
+                subversion
+            </pre>
+          </section>
+          <section>
+            <h2>Aprovechar el caché</h2>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Orquestación</h2>
+            <img src="img/docker-orquestacion.jpg"/>
+          </section>
+          <section>
+            <h2>Orquestación</h2>
+            <ul>
+              <li><a href="https://docs.docker.com/compose/overview/" target="_blank">Docker Compose</a></li>
+              <li><a href="https://docs.docker.com/engine/swarm/" target="_blank">Docker Swarm</a></li>
+              <li><a href="https://kubernetes.io/" target="_blank">Kubernetes</a></li>
+            </ul>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Sistemas operativos diseñados para Docker</h2>
+              <li><a href="https://coreos.com/" target="_blank">CoreOS</a></li>
+              <li><a href="http://rancher.com/rancher-o" target="_blank">RancherOS</a></li>
+            </ul>
+          </section>
         </section>
 
         <section>
