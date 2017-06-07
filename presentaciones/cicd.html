@@ -1,0 +1,332 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/black.css">
+    <title>Introducción a CI/CD</title>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+
+        <section>
+          <h1>CI/CD</h1>
+          <h2>Integración continua, entrega continua</h2>
+        </section>
+
+        <section>
+          <section>
+            <h1>Caso ACME</h1>
+          </section>
+          <section>
+            <h1>Versión 1.0</h1>
+          </section>
+          <section>
+            <img src="img/cicd-version1.png" height="600"/>
+          </section>
+          <section>
+            <h1>Versión 2.0</h1>
+          </section>
+          <section>
+            <img src="img/cicd-version2.png" height="600"/>
+          </section>
+          <section>
+            <h1>Versión 3.0</h1>
+          </section>
+          <section>
+            <img src="img/cicd-version3.png" height="600"/>
+          </section>
+        </section>
+        <section>
+          <h1>Propuesto por XP en los '90</h1>
+        </section>
+        <section>
+          <h1>Objetivo</h1>
+          <h2>Minimizar el esfuerzo de entrega de software</h2>
+        </section>
+        <section>
+          <section>
+            <h1>Terminología</h1>
+          </section>
+          <section>
+            <h2>Continuous delivery</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Lo que es</th>
+                  <th>Lo no que es</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Un método para entregar software totalmente funcional y
+                    probado en pequeños incrementos a producción.
+                  </td>
+                  <td>
+                    Un método para entregar grandes incrementos de software
+                    cada algunas semanas o meses.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h2>Continuous integration</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Lo que es</th>
+                  <th>Lo no que es</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Un método para buscar inconvenientes en el software lo más
+                    pronto posible en el ciclo de desarrollo y asegurar que
+                    todas las partes del mismo se comuniquen con las otras
+                    correctamente.
+                  </td>
+                  <td>
+                    Algo que debe ser ignorado o evitado porque lleva tiempo
+                    y esfuerzo
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h2>DevOps</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Lo que es</th>
+                  <th>Lo no que es</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Una forma de trabajo que alienta al equipo de operaciones
+                    y al equipo de desarrollo trabajar juntos de forma
+                    colaborativa para alcanzar el mismo objetivo.
+                  </td>
+                  <td>
+                    Una forma de trabajo para que los desarolladores hagan
+                    tareas de operaciones y viceversa.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h2>Release</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Lo que es</th>
+                  <th>Lo no que es</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    Un código único en un entorno determinado (testing, staging,
+                    production u otros)
+                  </td>
+                  <td>
+                    Un enorme paquete de cambios que se entregan a otra persona
+                    para resolver.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h2>Deploy</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Lo que es</th>
+                  <th>Lo no que es</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    El acto de publicar una <em>release</em> en un determinado
+                    entorno
+                  </td>
+                  <td>
+                    Algo que hace el equipo de operaciones
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+          <section>
+            <h2>En otras palabras...</h2>
+            <dl>
+              <dt>CI</dt><dd>Construir todo el tiempo</dd>
+              <dt>CD</dt><dd>Entregar en cualquier momento</dd>
+            </dl>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>Problemas que evita</h1>
+          </section>
+          <section>
+            <h2>Olvido en paquetes</h2>
+          </section>
+          <section>
+            <h2>Hotfixes en producción</h2>
+          </section>
+          <section>
+            <h2>Errores de sintaxis</h2>
+          </section>
+          <section>
+            <h2>¿Quién hizo este release?</h2>
+          </section>
+          <section>
+            <h2>No se puede hacer el release porque falto X</h2>
+          </section>
+          <section>
+            <h2>¿Cómo se hacía el paquete X?</h2>
+          </section>
+          <section>
+            <h2>No tengo el entorno X que hace falta</h2>
+          </section>
+          <section>
+            <h2>No sabía que hacía falta el entorno X</h2>
+          </section>
+          <section>
+            <h2>No existe el paquete X para el entorno Y</h2>
+          </section>
+          <section>
+            <h2>Actualizar dependencias</h2>
+          </section>
+          <section>
+            <h2>No más sorpresas</h2>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h1>Mejores prácticas</h1>
+          </section>
+          <section>
+            <h2>Mantener un repositorio de código</h2>
+          </section>
+          <section>
+            <h2>Automatizar construcción</h2>
+          </section>
+          <section>
+            <h2>Automatizar pruebas</h2>
+          </section>
+          <section>
+            <h2>Commits seguidos todos los días</h2>
+          </section>
+          <section>
+            <h2>Cada commit debe ser construído</h2>
+          </section>
+          <section>
+            <h2>Minimizar el tiempo de construcción</h2>
+          </section>
+          <section>
+            <h2>Probar en un entorno clon a producción</h2>
+          </section>
+          <section>
+            <h2>Facilitar el acceso a los últimos releases</h2>
+          </section>
+          <section>
+            <h2>Cualquiera puede ver los resultados de las contrucciones</h2>
+          </section>
+          <section>
+            <h2>Automatizar el despliegue</h2>
+          </section>
+        </section>
+        <section>
+          <h1>Herramientas</h1>
+          <ul>
+            <li><a href="https://jenkins.io/">Jenkins</a></li>
+            <li><a href="https://travis-ci.org/">Travis CI</a></li>
+            <li><a href="https://bitbucket.org/product/features/pipelines">Bitbucket pipelines</a></li>
+            <li><a href="https://appveyor.com/">AppVeyor</a></li>
+            <li><a href="https://www.visualstudio.com/tfs/">Team Foundation Server</a></li>
+          </ul>
+        </section>
+        <section>
+          <h1>Jenkins</h1>
+          <img src="img/cicd-jenkins-logo.png" height="400"/>
+          <p><small>Antes llamado Hudson</small></p>
+        </section>
+        <section>
+          <h2>Carácterísticas</h2>
+          <ul>
+            <li>Gestor de tareas (un cron mejorado)</li>
+            <li>Muchos plugins. Gran comunidad</li>
+            <li>Permite reproducir múltiples entornos</li>
+            <li>
+              Métricas
+              <ul>
+                <li>TTR: Time to release</li>
+                <li>TTP: Time to production</li>
+              </ul>
+            </li>
+            <li>Software libre</li>
+          </ul>
+        </section>
+        <section>
+          <h2>No sólo automatiza la contrucción</h2>
+          <ul>
+            <li>Chequeo de sintaxis</li>
+            <li>Análisis estático</li>
+            <li>Ofuscar / cifrar / minificar</li>
+            <li>Generar documentación</li>
+            <li>Publicar ejecutables / instaladores</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Términología</h2>
+          <dl>
+            <dt>Job</dt>
+            <dd>¿Cómo se construye?</dd>
+
+            <dt>Build</dt>
+            <dd>Instancia de contrucción en un momento determinado</dd>
+
+            <dt>Artifact</dt>
+            <dd>Producto software</dd>
+
+            <dt>Executor</dt>
+            <dd>Proceso encargado del trabajo. Puede ser local o remoto</dd>
+          </dl>
+        </section>
+        <section>
+          <h1>Demo</h1>
+        </section>
+        <section>
+          <h2>Referencias</h2>
+          <ul>
+            <li>
+              Continuous Delivery and DevOps: A Quickstart Guide. Paul Swartout.
+              Packt Publishing. 2012
+            </li>
+            <li>
+              <a href="https://en.wikipedia.org/wiki/Continuous_integration">
+                Continuous integration (En inglés). Última visita 7 de junio de
+                2017
+              </a>
+            </li>
+          </ul>
+        </section>
+      </div>
+    </div>
+    <script src="js/reveal.js"></script>
+    <script>
+      Reveal.initialize({history: true,});
+    </script>
+  </body>
+</html>
