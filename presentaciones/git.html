@@ -357,6 +357,12 @@
             <p>Atajo para git fetch y git merge</p>
             <code>git pull origin master</code>
           </section>
+
+          <section>
+            <h2>Blame</h2>
+            <p>Saber quien hizo un cambio en una linea</p>
+            <code>git blame file</code><br/>
+          </section>
         </section>
 
         <section>
@@ -504,6 +510,29 @@
               </a>
             </small>
           </section>
+
+          <section>
+            <h2>cherry-pick</h2>
+            <p>
+              Copiar las modificaciones de un commit de un branch a otro.
+              <small>Util para bugfixes</small>
+            </p>
+            <pre><code>
+              git cherry-pick commitId
+            </code></pre>
+          </section>
+
+          <section>
+            <h2>rebase</h2>
+            <p>
+              Copiar una serie de commits de un branch a otro
+              <small>Util para bugfixes o como alternativa al merge</small>
+            </p>
+            <pre><code>
+              git checkout feature
+              git rebase master
+            </code></pre>
+          </section>
         </section>
         <section>
           <h2>Plataformas web</h2>
@@ -516,8 +545,16 @@
         <section>
           <h2>Recursos para aprender git</h2>
           <ul class="">
-            <li><a href="https://try.github.io/" target="_blank">try.github.io</li>
+            <li><a href="https://try.github.io/" target="_blank">try.github.io</a></li>
+            <li><a href="https://learngitbranching.js.org/" target="_blank">learngitbranching.js.org</a></li>
+            <li><a href="https://git-school.github.io/visualizing-git/" target="_blank">git-school.github.io/visualizing-git</a></li>
           </ul>
+        </section>
+
+        <section>
+          <h2>Aprendamos jugando</h2>
+          <a href="https://github.com/git-game/git-game" target="_blank">github.com/git-game/git-game</a>
+          <pre><code>git clone https://github.com/git-game/git-game.git</code></pre>
         </section>
 
         <section>
@@ -525,13 +562,19 @@
           <ol>
             <li>
               <a href="http://ericsink.com/vcbe/html/history_of_version_control.html">
-                Sink, Eric. "A History of Version Control". 2011 (Web). Última visita 19 de
-                mayo de 2017
+                Sink, Eric. "A History of Version Control". 2011 (Web). Última visita 27 de
+                obtubre de 2018
               </a>
             </li>
             <li>
               Git Best Practices Guide. Pidoux, Eric. Packt Publishing. 2014.
               ISBN 978-1-78355-373-0
+            </li>
+            <li>
+              <a href="https://www.atlassian.com/git/tutorials/merging-vs-rebasing">
+                Atlassian. "Merging vs. Rebasing". (Web). Última visita 27 de
+                octubre de 2018
+              </a>
             </li>
           </ol>
         </section>
